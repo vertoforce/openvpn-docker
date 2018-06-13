@@ -13,4 +13,6 @@ RUN chmod +x *.sh
 
 WORKDIR /
 
+EXPOSE 1194
+
 CMD ["./start.sh"]

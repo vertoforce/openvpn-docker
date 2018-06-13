@@ -32,4 +32,14 @@ It will set up the openvpn certificates and ask questions to sign the certificat
 
 Now whenever running the openvpn container in prod, use the following command:
 
-`docker run --privileged --volume test:/etc/openvpn openvpn`
+`docker run -p 1194:1194/udp --privileged --volume test:/etc/openvpn openvpn`
+
+
+Getting Certs
+------
+
+To get certificates out of the volume, run the following command:
+
+`docker volume inspect test`
+
+Then look at the mount point and view the contents there.
