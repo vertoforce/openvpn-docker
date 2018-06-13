@@ -17,7 +17,7 @@ Build
 
 To build the docker instance run
 
-`docker built -t openvpn .`
+`docker build -t openvpn .`
 
 
 Deploy
@@ -27,12 +27,14 @@ When deploying, first run the docker instance with the following command:
 
 It will set up the openvpn certificates and ask questions to sign the certificates.  Change the volume name to something you will remember.
 
-`docker run --volume test:/etc/openvpn -ti openvpn /setup_openvpn.sh`
+`docker run --volume openvpn:/etc/openvpn -ti openvpn /setup_openvpn.sh`
 
 
-Now whenever running the openvpn container in prod, use the following command:
+Now whenever running the openvpn container, use the following command:
 
-`docker run -p 1194:1194/udp --privileged --volume test:/etc/openvpn openvpn`
+Note that this will use the set up volume, so if you want to regenerate certificates and keys, delete the volume and start again.
+
+`docker run -p 1194:1194/udp --privileged --volume openvpn:/etc/openvpn openvpn`
 
 
 Getting Certs
@@ -40,6 +42,6 @@ Getting Certs
 
 To get certificates out of the volume, run the following command:
 
-`docker volume inspect test`
+`docker volume inspect openvpn`
 
 Then look at the mount point and view the contents there.
