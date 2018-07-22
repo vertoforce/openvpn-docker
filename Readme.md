@@ -1,6 +1,8 @@
 Info
 ------
 
+This repo was a test to do it myself, it's probably best to use the other openvpn docker setup that was forked from the other library.
+
 This repo is a docker container that can help run openvpn.
 
 It is run once to set up the openvpn instance on a docker volume, then every other time it is run it uses the config files generated
